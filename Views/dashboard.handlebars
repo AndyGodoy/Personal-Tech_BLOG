@@ -1,0 +1,20 @@
+{{> partials/navbar}}
+
+<h1>Welcome to Your Dashboard, {{user.username}}!</h1>
+
+<h2>Your Posts</h2>
+{{#each user.posts}}
+  <div class="post">
+    <h3>{{this.title}}</h3>
+    <p>{{this.content}}</p>
+    <a href="/dashboard/edit/{{this.id}}">Edit</a>
+    <a href="/dashboard/delete/{{this.id}}">Delete</a>
+  </div>
+{{/each}}
+
+<h2>Create New Post</h2>
+<form action="/dashboard/new" method="POST">
+  <input type="text" name="title" placeholder="Title" required>
+  <textarea name="content" placeholder="Content" required></textarea>
+  <button type="submit">Create Post</button>
+</form>
